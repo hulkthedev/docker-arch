@@ -1,11 +1,15 @@
 <?php
 
 include 'MariaDb.php';
+include 'RedisDb.php';
 
 $maria = new MariaDb();
 $entriesFromMaria = $maria->getAllEntries();
 
+$redis = new RedisDb();
+$redis->storeEntries($entriesFromMaria);
 
+$entriesFromRedis = $redis->getAllEntries();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,20 +23,24 @@ $entriesFromMaria = $maria->getAllEntries();
   </head>
   <body>
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h3>Docker Arch</h3></a>
+        </div>
+    </nav>
+
+    <br />
+
     <div class="container">
         <div class="row">
-            <b>Docker Arch</b>
-        </div>
-
-        <div class="row">
-            MariaDB Content
+            Content from MariaDB
         </div>
 
         <div class="row">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Id</th>
                         <th scope="col">Name</th>
                     </tr>
                 </thead>
@@ -45,10 +53,31 @@ $entriesFromMaria = $maria->getAllEntries();
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            Content from Redis
+        </div>
 
-
-
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($entriesFromRedis as $entry): ?>
+                        <tr>
+                            <th scope="row"><?= $entry['id'] ?></th>
+                            <td><?= $entry['name'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 
