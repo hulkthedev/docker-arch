@@ -10,6 +10,7 @@ This example will create 2 Docker images during the building. Dependencies on Re
 ##### build
 
 ```bash
+chmod +x build.sh
 ./build.sh
 ```
 
