@@ -28,8 +28,6 @@ $entriesFromRedis = $redis->getAllEntries();
         </div>
     </nav>
 
-    <br />
-
     <div class="container">
         <div class="row">Content from MariaDB</div>
         <div class="row">

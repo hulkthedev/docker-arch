@@ -13,9 +13,9 @@ class RedisDb
         $host = getenv('REDIS_HOST');
         $port = getenv('REDIS_PORT');
 
-//        if (empty($host) || empty($port)) {
-//            throw new Exception('No Redis Config Data found!');
-//        }
+        if (empty($host) || empty($port)) {
+            throw new Exception('No Redis Config Data found!');
+        }
 
         $this->host = $host;
         $this->port = $port;
