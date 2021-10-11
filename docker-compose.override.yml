@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  docker-arch-php:
+  php:
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,37 +8,28 @@ services:
     env_file:
       - infrastructure/environment/dev/common.env
       - infrastructure/environment/dev/mariadb.env
-      - infrastructure/environment/dev/redis.env
     volumes:
       - .:/var/www/html
     expose:
       - "9000"
     links:
-      - docker-arch-mariadb
-      - docker-arch-redis
+      - mariadb
 
-  docker-arch-mariadb:
-    image: mariadb
+  mariadb:
+    image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_DATABASE: docker-arch
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: arch
+      MYSQL_DATABASE: docker_arch
     volumes:
       - ./infrastructure/mariadb/migrate:/docker-entrypoint-initdb.d
       - ./infrastructure/mariadb/confd:/etc/mysql/conf.d
+      - ./var/lib/mysql:/var/lib/mysql
     ports:
       - "3306/tcp"
 
-  docker-arch-redis:
-    image: redis
-    volumes:
-      - ./infrastructure/var/redis:/var/lib/redis
-      - ./infrastructure/redis/dev:/usr/local/etc/redis/redis.conf
-    ports:
-      - "6379:6379"
-
-  docker-arch-nginx:
+  nginx:
     image: nginx:latest
     volumes:
       - .:/var/www/html
@@ -46,4 +37,4 @@ services:
     ports:
       - "3699:80"
     links:
-      - docker-arch-php
+      - php

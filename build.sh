@@ -6,6 +6,8 @@ BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 #cd "${BUILD_DIR}" || exit
 
+# create var 777
+
 # install composer
 #COMPOSER_CACHE_VOLUME=composer-cache
 #COMPOSER_IMAGE="composer"

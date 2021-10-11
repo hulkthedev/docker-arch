@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  docker-arch-php:
+  php:
     image: php-fpm-alpine:prod
     build:
       context: .
@@ -9,4 +9,3 @@ services:
     env_file:
       - infrastructure/environment/prod/common.env
       - infrastructure/environment/prod/mariadb.env
-      - infrastructure/environment/prod/redis.env

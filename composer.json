@@ -1,0 +1,36 @@
+{
+  "name": "hulkthedev/docker-arch",
+  "type": "project",
+  "license": "MIT",
+  "description": "Simple docker architecture for dev and prod environments",
+  "authors": [{
+    "name": "~albei",
+    "email": "fatal.error.27@gmail.com",
+    "role": "developer"
+  }],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.4.0",
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {},
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  }
+}

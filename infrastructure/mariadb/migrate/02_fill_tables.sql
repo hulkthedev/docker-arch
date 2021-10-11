@@ -1,6 +1,8 @@
-CREATE TABLE example_table (
-    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+use docker_arch;
 
-    CONSTRAINT unique_name UNIQUE (name)
-);
+INSERT INTO example_table
+    (name)
+VALUES
+    ('Docker-Arch Example'),
+    ('with MariaDB'),
+    ('and Redis');

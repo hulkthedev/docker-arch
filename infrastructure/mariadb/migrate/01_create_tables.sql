@@ -1,6 +1,6 @@
-use docker-arch;
+CREATE TABLE example_table (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
 
-INSERT INTO example_table
-    (name)
-VALUES
-    ('Docker-Arch-Example');
+    CONSTRAINT unique_name UNIQUE (name)
+);
