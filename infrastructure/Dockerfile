@@ -9,14 +9,16 @@ RUN apk update && \
         bash
 
 RUN pecl install \
-        apcu-5.1.18
+        apcu-5.1.18 \
+        redis
 
 RUN docker-php-ext-install \
         pdo_mysql \
         opcache \
     && \
     docker-php-ext-enable \
-        apcu
+        apcu \
+        redis
 
 RUN echo Europe/Berlin > /etc/timezone
 
