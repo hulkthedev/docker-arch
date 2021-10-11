@@ -7,7 +7,7 @@
 
 This example will create 2 Docker images during the building. Dependencies on Redis, MySql and NGNX are resolved through configurations. Easy to use for productive and dev environments.
 
-[![Flow](https://github.com/hulkthedev/docker-arch/blob/develop/public/flow.svg?raw=true)](Flow)
+[![Flow](https://github.com/hulkthedev/docker-arch/blob/master/public/flow.svg?raw=true)](Flow)
 
 ##### build
 
