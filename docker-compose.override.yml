@@ -8,12 +8,14 @@ services:
     env_file:
       - infrastructure/environment/dev/common.env
       - infrastructure/environment/dev/mariadb.env
+      - infrastructure/environment/dev/redis.env
     volumes:
       - .:/var/www/html
     expose:
       - "9000"
     links:
       - mariadb
+      - redis
 
   mariadb:
     image: mariadb:latest
@@ -28,6 +30,13 @@ services:
       - ./var/lib/mysql:/var/lib/mysql
     ports:
       - "3306/tcp"
+
+  redis:
+    image: redis:latest
+    volumes:
+      - ./var/lib/redis:/var/lib/redis
+    ports:
+      - "6379:6379"
 
   nginx:
     image: nginx:latest

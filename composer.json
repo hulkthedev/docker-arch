@@ -13,7 +13,8 @@
   "require": {
     "php": "^7.4.0",
     "ext-json": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-redis": "*"
   },
   "require-dev": {},
   "config": {

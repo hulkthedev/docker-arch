@@ -22,7 +22,6 @@ $entriesFromRedis = $redis->getAllEntries();
     <title>Docker Arch</title>
   </head>
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><h3>Docker Arch</h3></a>
@@ -32,10 +31,7 @@ $entriesFromRedis = $redis->getAllEntries();
     <br />
 
     <div class="container">
-        <div class="row">
-            Content from MariaDB
-        </div>
-
+        <div class="row">Content from MariaDB</div>
         <div class="row">
             <table class="table table-hover">
                 <thead>
@@ -57,10 +53,7 @@ $entriesFromRedis = $redis->getAllEntries();
     </div>
 
     <div class="container">
-        <div class="row">
-            Content from Redis
-        </div>
-
+        <div class="row">Content from Redis</div>
         <div class="row">
             <table class="table table-hover">
                 <thead>
@@ -70,10 +63,10 @@ $entriesFromRedis = $redis->getAllEntries();
                 </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($entriesFromRedis as $entry): ?>
+                    <?php foreach ($entriesFromRedis as $index => $value): ?>
                         <tr>
-                            <th scope="row"><?= $entry['id'] ?></th>
-                            <td><?= $entry['name'] ?></td>
+                            <th scope="row"><?= $index ?></th>
+                            <td><?= $value ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
