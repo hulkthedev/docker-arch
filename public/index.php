@@ -1,59 +1,56 @@
 <?php
 
-/**
- * @return PDO
- * @throws Exception
- */
-function getPdoDriver(): PDO
-{
-    $host = getenv('MARIADB_HOST');
-    $user = getenv('MARIADB_USER');
-    $password = getenv('MARIADB_PASSWORD');
-    $name = getenv('MARIADB_NAME');
-    $port = getenv('MARIADB_PORT');
+include 'MariaDb.php';
 
-    if (empty($host) || empty($user) || empty($password) || empty($name) || empty($port)) {
-        throw new Exception('No MariaDB Config Data found!');
-    }
-
-    return new PDO("mysql:dbname=$name;host=$host;port=$port;charset=utf8mb4", $user, $password, [
-        PDO::ATTR_TIMEOUT => 10
-    ]);
-}
-
-/**
- * @return array
- */
-function readFromDatabase(): array
-{
-    $result = [];
-
-    try {
-        $statement = getPdoDriver()->prepare('SELECT * FROM example_table');
-        $statement->execute();
-
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    } catch (Exception $exception) {
-        var_dump($exception->getMessage());
-    }
-
-    return $result;
-}
-
-$data = readFromDatabase();
-var_dump($data);
+$maria = new MariaDb();
+$entriesFromMaria = $maria->getAllEntries();
 
 
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <title>Docker Arch</title>
   </head>
   <body>
-    <h1>Docker Arch</h1>
+
+    <div class="container">
+        <div class="row">
+            <b>Docker Arch</b>
+        </div>
+
+        <div class="row">
+            MariaDB Content
+        </div>
+
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($entriesFromMaria as $entry): ?>
+                        <tr>
+                            <th scope="row"><?= $entry['id'] ?></th>
+                            <td><?= $entry['name'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+    </div>
+
   </body>
 </html>
