@@ -1,9 +1,11 @@
 # Docker Arch
 
-[![Version](https://img.shields.io/badge/Version-0.0.1-blue)](https://github.com/hulkthedev/docker-arch)
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/hulkthedev/docker-arch)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Simple architecture for docker dev and prod environments
+### Simple docker architecture for dev and prod environments.
+
+This example will create 2 Docker images during the building. Dependencies on Redis, MySql and NGNX are resolved through configurations.
 
 ##### build
 

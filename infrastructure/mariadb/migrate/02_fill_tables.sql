@@ -1,0 +1,6 @@
+CREATE TABLE example_table (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+
+    CONSTRAINT unique_name UNIQUE (name)
+);

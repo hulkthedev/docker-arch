@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  docker-arch-php:
+    image: php-fpm-alpine:prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "unless-stopped"
+    env_file:
+      - infrastructure/environment/prod/common.env
+      - infrastructure/environment/prod/mariadb.env

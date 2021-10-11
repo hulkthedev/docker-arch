@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  docker-arch-php-base:
+    image: php-fpm-alpine:base
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  docker-arch-php-dev:
+    image: php-fpm-alpine:dev
+    build:
+      context: .
+      dockerfile: dockerfiles/dev/Dockerfile
+    depends_on:
+      - docker-arch-php-base
+
+  docker-arch-php-prod:
+    image: php-fpm-alpine:prod
+    build:
+      context: .
+      dockerfile: dockerfiles/prod/Dockerfile
+    depends_on:
+      - docker-arch-php-base
