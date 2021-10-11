@@ -12,3 +12,13 @@ This example will create 2 Docker images during the building. Dependencies on Re
 ```bash
 ./build.sh
 ```
+
+##### run
+
+```bash
+# run dev container
+docker-compose up -d
+
+# run prod container
+docker-compose up -f docker-compose.yml -d
+```
