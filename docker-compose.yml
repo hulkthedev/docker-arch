@@ -9,3 +9,4 @@ services:
     env_file:
       - infrastructure/environment/prod/common.env
       - infrastructure/environment/prod/mariadb.env
+      - infrastructure/environment/prod/redis.env
