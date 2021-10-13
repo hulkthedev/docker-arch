@@ -5,7 +5,7 @@
 
 ### Simple docker architecture for dev and prod environments.
 
-This example will create 2 Docker images during the building. Dependencies on Redis, MySql and NGNX are resolved through configurations. Easy to use for productive and dev environments.
+This example will create 2 Docker images during the building. Dependencies on Redis, MySql and NGINX are resolved through configurations. Easy to use for productive and dev environments.
 
 [![Flow](https://github.com/hulkthedev/docker-arch/blob/master/public/flow.png?raw=true)](Flow)
 
