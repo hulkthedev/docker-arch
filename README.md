@@ -1,6 +1,5 @@
 # Docker Arch
 
-[![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/hulkthedev/docker-arch)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ### Simple docker architecture for dev and prod environments.
